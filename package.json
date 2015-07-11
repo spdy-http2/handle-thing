@@ -1,6 +1,6 @@
 {
   "name": "handle-thing",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Wrap Streams2 instance into a HandleWrap",
   "main": "lib/handle.js",
   "scripts": {
