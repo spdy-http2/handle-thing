@@ -93,6 +93,23 @@ describe('Handle Thing', function() {
 
           assert.equal(socket.remoteAddress, 'ohai');
         });
+
+        it('should emit ECONNRESET at `close` event', function(done) {
+          pair.other.emit('close');
+
+          // No error emitted in v0.8
+          if (thing.mode === 'rusty') {
+            socket.on('close', function() {
+              done();
+            });
+            return;
+          }
+
+          socket.on('error', function(err) {
+            assert(/ECONNRESET/.test(err.message));
+            done();
+          });
+        });
       }
     });
   });
