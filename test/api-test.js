@@ -76,6 +76,15 @@ describe('Handle Thing', function() {
         socket.resume();
       });
 
+      it('should kill pending requests', function(done) {
+        handle._options.close = function() {
+          setTimeout(done, 75);
+        };
+
+        socket.write('hello');
+        socket.destroy();
+      });
+
       if (mode === 'normal') {
         it('should invoke `getPeerName` callback', function() {
           handle._options.getPeerName = function() {
