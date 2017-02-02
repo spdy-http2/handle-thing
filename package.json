@@ -5,7 +5,8 @@
   "main": "lib/handle.js",
   "scripts": {
     "lint": "standard",
-    "test": "mocha --reporter=spec test/*-test.js"
+    "test": "mocha --reporter=spec test/*-test.js",
+    "coverage": "istanbul cover node_modules/.bin/_mocha -- --reporter=spec test/**/*-test.js"
   },
   "pre-commit": [
     "lint",
@@ -27,6 +28,7 @@
   },
   "homepage": "https://github.com/spdy-http2/handle-thing#readme",
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "mocha": "^2.2.5",
     "pre-commit": "^1.2.2",
     "readable-stream": "^2.0.1",
