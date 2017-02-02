@@ -4,8 +4,13 @@
   "description": "Wrap Streams2 instance into a HandleWrap",
   "main": "lib/handle.js",
   "scripts": {
+    "lint": "standard",
     "test": "mocha --reporter=spec test/*-test.js"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/indutny/handle-thing.git"
@@ -18,12 +23,14 @@
   "author": "Fedor Indutny <fedor@indutny.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/indutny/handle-thing/issues"
+    "url": "https://github.com/spdy-http2/handle-thing/issues"
   },
-  "homepage": "https://github.com/indutny/handle-thing#readme",
+  "homepage": "https://github.com/spdy-http2/handle-thing#readme",
   "devDependencies": {
     "mocha": "^2.2.5",
+    "pre-commit": "^1.2.2",
     "readable-stream": "^2.0.1",
+    "standard": "^8.6.0",
     "stream-pair": "^1.0.0"
   }
 }

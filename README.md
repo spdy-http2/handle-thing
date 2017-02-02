@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/indutny/handle-thing.png)](http://travis-ci.org/indutny/handle-thing)
 [![NPM version](https://badge.fury.io/js/handle-thing.svg)](http://badge.fury.io/js/handle-thing)
 
-The right thing when you need it
+> Wrap Streams2 instance into a HandleWrap. The right thing when you need it
 
 ## LICENSE
 
