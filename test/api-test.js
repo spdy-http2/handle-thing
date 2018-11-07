@@ -16,17 +16,17 @@ describe('Handle Thing', function () {
       beforeEach(function () {
         pair = streamPair.create()
         handle = thing.create(mode === 'normal' ? pair.other : null)
-        socket = new net.Socket({ handle: handle })
+        socket = new net.Socket({
+          handle: handle,
+          readable: true,
+          writable: true
+        })
 
         if (mode === 'lazy') {
           setTimeout(function () {
             handle.setStream(pair.other)
           }, 50)
         }
-
-        // For v0.8
-        socket.readable = true
-        socket.writable = true
       })
 
       afterEach(function () {
@@ -98,14 +98,6 @@ describe('Handle Thing', function () {
 
         it('should emit ECONNRESET at `close` event', function (done) {
           pair.other.emit('close')
-
-          // No error emitted in v0.8
-          if (thing.mode === 'rusty') {
-            socket.on('close', function () {
-              done()
-            })
-            return
-          }
 
           socket.on('error', function (err) {
             assert(/ECONNRESET/.test(err.message))
