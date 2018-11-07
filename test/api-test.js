@@ -43,7 +43,7 @@ describe('Handle Thing', function () {
           chunks += chunk
         })
         socket.on('end', function () {
-          assert.equal(chunks, 'hello world... ok')
+          assert.strictEqual(chunks, 'hello world... ok')
 
           // allowHalfOpen is `false`, so the `end` should be followed by `close`
           socket.once('close', function () {
@@ -62,7 +62,7 @@ describe('Handle Thing', function () {
           chunks += chunk
         })
         pair.on('end', function () {
-          assert.equal(chunks, 'hello world... ok')
+          assert.strictEqual(chunks, 'hello world... ok')
 
           done()
         })
@@ -93,7 +93,7 @@ describe('Handle Thing', function () {
             return { address: 'ohai' }
           }
 
-          assert.equal(socket.remoteAddress, 'ohai')
+          assert.strictEqual(socket.remoteAddress, 'ohai')
         })
 
         it('should emit ECONNRESET at `close` event', function (done) {
